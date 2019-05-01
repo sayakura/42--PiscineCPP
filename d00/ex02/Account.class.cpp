@@ -6,7 +6,7 @@
 /*   By: qpeng <qpeng@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 19:35:41 by qpeng             #+#    #+#             */
-/*   Updated: 2019/04/30 22:28:35 by qpeng            ###   ########.fr       */
+/*   Updated: 2019/04/30 22:39:05 by qpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,12 +126,12 @@ bool		Account::makeWithdrawal(int withdrawal)
 	{
 		_totalAmount -= withdrawal;
 		_nbWithdrawals++;
+		_amount -= withdrawal;
 		_totalNbWithdrawals++;
         
 		std::cout << withdrawal <<
                 ";amount:" << _amount << 
                 ";nb_withdrawals:" << _nbWithdrawals;
-		_amount -= withdrawal;
 		status = true;
 	}
     std::cout << std::endl;

@@ -6,16 +6,16 @@
 /*   By: qpeng <qpeng@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:53:02 by qpeng             #+#    #+#             */
-/*   Updated: 2019/04/29 20:04:20 by qpeng            ###   ########.fr       */
+/*   Updated: 2019/04/30 18:44:28 by qpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # ifndef CONTACT_CPP
 # define CONTACT_CPP
-# define MAX_CONTACT_TYPE_LEN 11
-# define MAX_CONTACT_LIST_LEN 8 
-# define CONTACT_FIELD_INDEX int
 #include <string>
+
+typedef int CONTACT_FIELD_INDEX ;
+const int MAX_CONTACT_TYPE_LEN = 11;
 
 enum  E_CONTACT_FIELDS {
     CT_FIRSTNAME,
@@ -45,7 +45,7 @@ class Contact
         std::string meal;
         std::string underwearColor;
         std::string darkestSecret;
-        std::string *map;
+        std::string map[MAX_CONTACT_TYPE_LEN];
     public:
         Contact(void);
         ~Contact(void);

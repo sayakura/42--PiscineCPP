@@ -6,7 +6,7 @@
 /*   By: qpeng <qpeng@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:53:02 by qpeng             #+#    #+#             */
-/*   Updated: 2019/04/30 18:44:28 by qpeng            ###   ########.fr       */
+/*   Updated: 2019/04/30 20:34:22 by qpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ class Contact
         std::string meal;
         std::string underwearColor;
         std::string darkestSecret;
-        std::string map[MAX_CONTACT_TYPE_LEN];
+        std::string *map[MAX_CONTACT_TYPE_LEN];
     public:
         Contact(void);
         ~Contact(void);

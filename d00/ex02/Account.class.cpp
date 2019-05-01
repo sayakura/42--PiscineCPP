@@ -6,7 +6,7 @@
 /*   By: qpeng <qpeng@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 19:35:41 by qpeng             #+#    #+#             */
-/*   Updated: 2019/04/30 19:49:11 by qpeng            ###   ########.fr       */
+/*   Updated: 2019/04/30 20:31:06 by qpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,50 +16,127 @@
 #include <ctime>
 #include "Account.class.hpp"
 
-
 void	Account::_displayTimestamp( void )
 {
 	time_t          timev = time(&timev);
-	struct tm       *stamp = localtime(&timev);
-    std::string     out_str; 
+	struct tm       *tm = localtime(&timev);
+    std::string     outStr; 
 
-	std::cout << (1900 + stamp->tm_year);
-	out_str += (stamp->tm_mon >= 9) 
-            ? std::to_string(stamp->tm_mon + 1)
-            : ("0" + (stamp->tm_mon + 1));
-    out_str += (stamp->tm_mday > 9) 
-            ? std::to_string(stamp->tm_mday)
-            : ("0" + (stamp->tm_mday));
-   out_str += (stamp->tm_hour > 9) 
-            ? ("_" + stamp->tm_hour)
-            : ("_0" + (stamp->tm_hour));
-	if (stamp->tm_hour > 9)
-		out_str +=  "_" + stamp->tm_hour;
-	else
-		out_str +=  "_0" + stamp->tm_hour;
-	if (stamp->tm_min > 9)
-		out_str += stamp->tm_min;
-	else
-		out_str +=  "0" + stamp->tm_min;
-	if (stamp->tm_sec > 9)
-		out_str += stamp->tm_sec;
-	else
-		out_str += "0" +stamp->tm_sec;
-    std::cout << out_str;
+	std::cout << (1900 + tm->tm_year);
+	outStr += (tm->tm_mon >= 9) 
+            ? std::to_string(tm->tm_mon + 1)
+            : ("0" + std::to_string(tm->tm_mon + 1));
+    outStr += (tm->tm_mday > 9) 
+            ? std::to_string(tm->tm_mday)
+            : ("0" + std::to_string(tm->tm_mday));
+    outStr += (tm->tm_hour > 9) 
+            ? ("_" + std::to_string(tm->tm_hour))
+            : ("_0" + std::to_string(tm->tm_hour));
+    outStr += (tm->tm_min > 9) 
+            ? std::to_string(tm->tm_min)
+            : "0" + std::to_string(tm->tm_min);
+    outStr += (tm->tm_sec > 9) 
+            ? std::to_string(tm->tm_sec)
+            : "0" + std::to_string(tm->tm_sec);
+    std::cout << outStr;
 	return ;
 }
 
 Account::Account(int amnt)
 {
-	this->_nbAccounts = this->_nbAccounts + 1;
-	this->_totalAmount = this->_totalAmount + amnt;
 	this->_nbDeposits = 0;
 	this->_nbWithdrawals = 0;
+	(this->_nbAccounts)++;
+	this->_totalAmount += amnt;
 	this->_accountIndex = this->_nbAccounts;
 	this->_amount = amnt;
 
 	std::cout << "[";
     _displayTimestamp();
     std::cout << "] index:" << (this->_accountIndex - 1) <<
-		";amount:" << this->_amount << ";created" << std::endl;
+		            ";amount:" << this->_amount << 
+                    ";created" <<
+    std::endl;
+}
+
+Account::~Account(void)
+{
+	std::cout << "[";
+	_displayTimestamp();
+	std::cout << "] index:" << (this->_accountIndex - 1) <<
+		            ";amount:" << this->_amount << 
+                    ";closed" <<
+    std::endl;
+}
+
+void	Account::displayAccountsInfos(void)
+{
+	std::cout << "[";
+	_displayTimestamp();
+	std::cout << "] accounts:" << _nbAccounts <<
+                    ";total:" << _totalAmount <<
+                    ";deposits:" << _totalNbDeposits <<
+                    ";withdrawals:" << _totalNbWithdrawals <<
+    std::endl;
+}
+
+void		Account::displayStatus(void) const
+{
+	std::cout << "[";
+	_displayTimestamp();
+	std::cout << "] index:" << (this->_accountIndex - 1) <<
+                    ";amount:" << this->_amount << 
+                    ";deposits:" << this->_nbDeposits <<
+                    ";withdrawals:" << this->_nbWithdrawals << 
+    std::endl;
+}
+
+
+void		Account::makeDeposit(int deposit)
+{
+	this->_amount += deposit;
+	(this->_nbDeposits)++;
+	this->_totalAmount += deposit;
+	(this->_totalNbDeposits)++;
+
+	std::cout << "[";
+	_displayTimestamp();
+	std::cout << "] index:" << (this->_accountIndex - 1) <<
+                    ";p_amount:" << (this->_amount - deposit) << 
+		            ";deposit:" << deposit << 
+                    ";amount:" << this->_amount << 
+                    ";nb_deposits:" << this->_nbDeposits << 
+    std::endl;
+}
+
+bool		Account::makeWithdrawal(int withdrawal)
+{
+	if (this->_amount < withdrawal)
+	{
+		std::cout << "[";
+		_displayTimestamp();
+		std::cout << "] index:" << (this->_accountIndex - 1) << 
+			            ";p_amount:" << this->_amount << 
+                        ";withdrawal:" << 
+                        "refused" << 
+        std::endl;
+		return (false);
+	}
+	else
+	{
+		this->_totalAmount -= withdrawal;
+		this->_amount -= withdrawal;
+		(this->_nbWithdrawals)++;
+		(this->_totalNbWithdrawals)++;
+        
+		std::cout << "[";
+		_displayTimestamp();
+		std::cout << "] index:" << (this->_accountIndex - 1) << 
+			            ";p_amount:" << (this->_amount + withdrawal) << 
+                        ";withdrawal:" << withdrawal <<
+                        ";amount:" << this->_amount << 
+                        ";nb_withdrawals:" << this->_nbWithdrawals <<
+        std::endl;
+		return (true);
+	}
 }

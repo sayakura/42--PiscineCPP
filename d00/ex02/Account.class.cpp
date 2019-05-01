@@ -6,7 +6,7 @@
 /*   By: qpeng <qpeng@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 19:35:41 by qpeng             #+#    #+#             */
-/*   Updated: 2019/04/30 22:17:10 by qpeng            ###   ########.fr       */
+/*   Updated: 2019/04/30 22:21:53 by qpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ Account::Account(int amnt)
 Account::~Account(void)
 {
 	_displayTimestamp();
-	std::cout << "index:" << (_accountIndex - 1) <<
+	std::cout << "index:" << _accountIndex <<
                 ";amount:" << _amount << 
                 ";closed" <<
     std::endl;
@@ -85,7 +85,7 @@ void	Account::displayAccountsInfos(void)
 void		Account::displayStatus(void) const
 {
 	_displayTimestamp();
-	std::cout << "index:" << (_accountIndex - 1) <<
+	std::cout << "index:" << _accountIndex <<
                 ";amount:" << _amount << 
                 ";deposits:" << _nbDeposits <<
                 ";withdrawals:" << _nbWithdrawals << 
@@ -101,7 +101,7 @@ void		Account::makeDeposit(int deposit)
 	_totalNbDeposits++;
 
 	_displayTimestamp();
-	std::cout << "index:" << (_accountIndex - 1) <<
+	std::cout << "index:" << _accountIndex <<
                 ";p_amount:" << (_amount - deposit) << 
                 ";deposit:" << deposit << 
                 ";amount:" << _amount << 
@@ -114,7 +114,7 @@ bool		Account::makeWithdrawal(int withdrawal)
     _displayTimestamp();
 	if (_amount < withdrawal)
 	{
-		std::cout << "index:" << (_accountIndex - 1) << 
+		std::cout << "index:" << _accountIndex << 
                     ";p_amount:" << _amount << 
                     ";withdrawal:" << 
                     "refused" << 
@@ -128,7 +128,7 @@ bool		Account::makeWithdrawal(int withdrawal)
 		_nbWithdrawals++;
 		_totalNbWithdrawals++;
         
-		std::cout << "index:" << (_accountIndex - 1) << 
+		std::cout << "index:" << _accountIndex << 
                     ";p_amount:" << (_amount + withdrawal) << 
                     ";withdrawal:" << withdrawal <<
                     ";amount:" << _amount << 

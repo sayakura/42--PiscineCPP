@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Pony.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Kura <Kura@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: qpeng <qpeng@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 05:57:29 by Kura              #+#    #+#             */
-/*   Updated: 2019/05/01 06:34:38 by Kura             ###   ########.fr       */
+/*   Updated: 2019/05/01 23:04:57 by qpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,21 @@ void Pony::introduce(void)
             break;
     }
     std::cout << std::endl << "And my height is " << _height <<  std::endl;
+}
+
+void ponyOnTheHeap(void)
+{
+    Pony *ponyA = new Pony("seli", RED, 100.0);
+    ponyA->run();
+    ponyA->dance();
+    ponyA->introduce();
+    delete ponyA;
+}
+
+void ponyOnTheStack(void)
+{
+    Pony ponyA = Pony("seli.2", GREEN, 120.0);
+    ponyA.run();
+    ponyA.dance();
+    ponyA.introduce();
 }

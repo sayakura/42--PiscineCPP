@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Human.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Kura <Kura@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: qpeng <qpeng@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 07:21:15 by Kura              #+#    #+#             */
-/*   Updated: 2019/05/01 07:38:19 by Kura             ###   ########.fr       */
+/*   Updated: 2019/05/01 23:27:44 by qpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Human.hpp"
+
+Human::Human(){};
+Human::~Human(){};
 
 void Human::meleeAttack(std::string const & target)
 {
@@ -42,7 +45,6 @@ void Human::action(std::string const & action_name, std::string const & target)
         if (action_name == commands[i])
         {
             (this->*ptr[i])(target);
-            break ;
+            return ;
         }
-    return ;
 }

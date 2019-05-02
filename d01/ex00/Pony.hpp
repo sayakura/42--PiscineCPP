@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Pony.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Kura <Kura@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: qpeng <qpeng@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 05:57:35 by Kura              #+#    #+#             */
-/*   Updated: 2019/05/01 06:26:04 by Kura             ###   ########.fr       */
+/*   Updated: 2019/05/01 23:05:09 by qpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,8 @@ class Pony
         void dance(void);
         void introduce(void);
 };
+
+void ponyOnTheHeap();
+void ponyOnTheStack();
 
 #endif

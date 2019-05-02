@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Human.hpp                                          :+:      :+:    :+:   */
+/*   ZombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qpeng <qpeng@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/01 07:18:56 by Kura              #+#    #+#             */
-/*   Updated: 2019/05/01 23:27:23 by qpeng            ###   ########.fr       */
+/*   Created: 2019/05/01 23:14:44 by qpeng             #+#    #+#             */
+/*   Updated: 2019/05/01 23:14:57 by qpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMAN_CPP
+#include "ZombieHorde.hpp"
 
-#define HUMAN_CPP
-#include <iostream>
-#include <string>
-class Human
+ZombieHorde::ZombieHorde(int n) : size(n)
 {
-    private:
-        void meleeAttack(std::string const & target);
-        void rangedAttack(std::string const & target);
-        void intimidatingShout(std::string const & target);
-    public:
-        void action(std::string const &action_name, std::string const &target);
-        Human();
-        ~Human();
-};
+	std::cout << "ZombieHord init" << std::endl;
+	zombies = new Zombie[n];
+}
 
-#endif
+ZombieHorde::~ZombieHorde()
+{
+	delete[] zombies;
+	std::cout << "ZombieHord out" << std::endl;
+}
+
+void ZombieHorde::announce(void)
+{
+	for (int i = 0; i < size; i++)
+		zombies[i].announce();
+}

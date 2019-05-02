@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Human.hpp                                          :+:      :+:    :+:   */
+/*   ZombieHorde.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qpeng <qpeng@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/01 07:18:56 by Kura              #+#    #+#             */
-/*   Updated: 2019/05/01 23:27:23 by qpeng            ###   ########.fr       */
+/*   Created: 2019/05/01 23:14:53 by qpeng             #+#    #+#             */
+/*   Updated: 2019/05/01 23:14:54 by qpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMAN_CPP
+#ifndef SELI_ZOMBIEHORDE_HPP
+#define SELI_ZOMB
 
-#define HUMAN_CPP
-#include <iostream>
 #include <string>
-class Human
+#include <sstream>
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
+#include "Zombie.hpp"
+
+class ZombieHorde
 {
-    private:
-        void meleeAttack(std::string const & target);
-        void rangedAttack(std::string const & target);
-        void intimidatingShout(std::string const & target);
-    public:
-        void action(std::string const &action_name, std::string const &target);
-        Human();
-        ~Human();
+private:
+	int size;
+	Zombie *zombies;
+
+public:
+	ZombieHorde(int n);
+	~ZombieHorde();
+	void announce(void);
 };
 
 #endif

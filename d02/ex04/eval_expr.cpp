@@ -6,7 +6,7 @@
 /*   By: qpeng <qpeng@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 22:48:23 by qpeng             #+#    #+#             */
-/*   Updated: 2019/05/02 23:09:51 by qpeng            ###   ########.fr       */
+/*   Updated: 2019/05/02 23:28:40 by qpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@
 Fixed		parse_sum(char **expr);
 float		ft_stof(char **str)
 {
-	Fixed             nbr;
     int               dot = 0;
     std::string       s;
     float             ret;
 
-	nbr = 0;
 	while ((**str >= '0' && **str <= '9') || **str == '.')
 	{
         if (**str == '.')

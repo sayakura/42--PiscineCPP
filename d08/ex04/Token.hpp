@@ -11,17 +11,17 @@ enum E_TOKEN_TYPE
 };
 
 class Token {
-        char    _val;
+        int     _val;
 		int     _type;
 		Token();
 	public:
-        Token(char, int);
+        Token(int, int);
 		Token(const Token &);
 		~Token();
 		Token & operator=(const Token &);
-		char getVal() const;
-		char getType() const;
-        static E_TOKEN_TYPE getType(char);
+		int getVal() const;
+		int getType() const;
+        static E_TOKEN_TYPE getType(int);
         class InvalidTokenExcepction : public std::exception
         {
             public:

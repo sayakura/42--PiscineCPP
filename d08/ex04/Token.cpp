@@ -10,16 +10,16 @@ Token & Token::operator=(Token const& rdi) {
     return *this;
 }
 
-Token::Token(char val, int token_type) : _val(val), _type(token_type)
+Token::Token(int val, int token_type) : _val(val), _type(token_type)
     { };
 
-char Token::getVal() const {
+int Token::getVal() const {
     return _val;}
 
-char Token::getType() const {
+int Token::getType() const {
     return _type;}
 
-E_TOKEN_TYPE Token::getType(char ch) {
+E_TOKEN_TYPE Token::getType(int ch) {
     if (ch >= '0' && ch <= '9')
         return TOKEN_NUM;
     else if (ch == '+' || ch == '-' || ch == '/'
